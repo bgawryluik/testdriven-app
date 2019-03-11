@@ -31,16 +31,16 @@ class TestUserService(BaseTestCase):
         with self.client:
             response = self.client.post(
                 '/users',
-            data=json.dumps({
-                'username': 'michael',
-                'email': 'michael@mherman.org'
-            }),
-            content_type='application/json',
-        )
-        data = json.loads(response.data.decode())
-        self.assertEqual(response.status_code, 201)
-        self.assertIn('michael@mherman.org was added!', data['message'])
-        self.assertIn('success', data['status'])
+                data=json.dumps({
+                    'username': 'michael',
+                    'email': 'michael@mherman.org'
+                }),
+                content_type='application/json',
+            )
+            data = json.loads(response.data.decode())
+            self.assertEqual(response.status_code, 201)
+            self.assertIn('michael@mherman.org was added!', data['message'])
+            self.assertIn('success', data['status'])
 
     def test_add_user_invalid_json(self):
         """Ensure error is thrown if the JSON object is empty."""
