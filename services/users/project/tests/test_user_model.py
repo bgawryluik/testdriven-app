@@ -12,13 +12,6 @@ from project.tests.utils import add_user
 
 class TestUserModel(BaseTestCase):
 
-    def test_add_user(self):
-        user = add_user('justatest', 'test@test.com', 'greaterthaneight')
-        self.assertTrue(user.id)
-        self.assertEqual(user.username, 'justatest')
-        self.assertEqual(user.email, 'test@test.com')
-        self.assertTrue(user.active)
-
     def test_add_user_duplicate_username(self):
         add_user('justatest', 'test@test.com', 'greaterthaneight')
         duplicate_user = User(
